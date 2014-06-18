@@ -1,6 +1,6 @@
 #C-LinuxShell-Reviewing#
 Some code for the exercises in my Computer Science course.
-#*C-Language*#
+##C-Language
 Some code for the C-language excersices
 * Erato 
 * Fibonacci 
@@ -8,7 +8,7 @@ Some code for the C-language excersices
 * Stack 
 * Queue 
 * ... 
-#*Linux-Shell*#
+##Linux-Shell
 Some code for the Linux-Shell excersices
 * File Exist 
 * File Type 
@@ -16,12 +16,12 @@ Some code for the Linux-Shell excersices
 * Show 
 * Loop 
 * ... 
-#*Lectures*#
+##Lectures
 The lectures of course.
 * C languages 
 * Unix 
 * Algorithms 
-#*Eric-Renault-TSP*#
+##Eric-Renault-TSP
 The solution of professor Eric Renault - Computer Science - Telecom Sudparis, France
 
 
