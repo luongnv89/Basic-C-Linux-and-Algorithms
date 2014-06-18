@@ -32,6 +32,8 @@ The lectures of course.
 
 The solution of professor Eric Renault - Computer Science - Telecom Sudparis, France
 
+-------------------------------
+Nguyen Van Luong - luongnv89@gmail.com - [http://luongnv.info](http://luongnv.info)
 
 
 
