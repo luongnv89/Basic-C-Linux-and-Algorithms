@@ -217,6 +217,7 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 	int size_payload;
 
 	printf("\nPacket number %d:\n",count);
+	printf("\nPacket header time stamp %ld.%06ld:\n",header->ts.tv_sec,header->ts.tv_usec);
 	count++;
 	/*In memory:  [packet| SIZE_ETHERNET| size_ip (IP header length)| size_tcp (TCP header length)| payload]*/
 	/*define ethernet header - magical typecasting*/
