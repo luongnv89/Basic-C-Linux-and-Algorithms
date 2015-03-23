@@ -15,11 +15,12 @@
 #include <arpa/inet.h>
 
 /*default snap length (maximum bytes per packet to capture)*/
-#define SNAP_LEN 2048
+#define SNAP_LEN 1518
 /*ethernet headers are always exactly 14 bytes*/
 #define SIZE_ETHERNET 14
 /*Ethernet addresses are 6 bytes*/
 #define ETHER_ADDR_LEN 6
+/*TYPECASTING of packet - from got_packet function*/
 
 /*Ethernet header*/
 struct sniff_ethernet{
@@ -72,6 +73,21 @@ struct sniff_tcp{
 	u_short th_sum;// Checksum
 	u_short th_urp;// urgent pointer
 };
+/*This is the prototype of callback function - must follow in ordered to let's pcap understand and use the callback function
+* return: void - pcap_loop() wouldn't know how to handle a return value
+* *args: corresponds to the last agument of pcap_loop() - u_char *user (NULL)
+* *header: pcap header: contains information about when the packet was sniffed, how large it is, etc
+* The pcap_pkthdr structure is defined in pcap.h as:
+* struct pcap_pkthdr{
+	struct timeval ts;//time stamp
+	bpf_u_int32 caplen;//length of portion present
+	bpf_u_int32 len;// length this packet (off wire)
+}
+* *packet: the most interesting. points to the first byte of a chunk of data containing the entire packet, as sniffed by pcap_loop(). 
+* a packet contains many attributes, it is not really a string, but actually a collection of structures (for instance, a TCP/IP packet would have an Ethernet header, an IP header, a TCP header, and lastly, the packet's payload)
+* To make any use of it, we must do some interesting typecasting
+* 
+*/
 
 void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *packet);
 void print_payload(const u_char *payload,int len);
@@ -92,7 +108,7 @@ void print_app_banner(void){
 /*Print help text*/
 
 void print_app_usage(void){
-	printf("Usage: %s[interface]\n",APP_NAME);
+	printf("Usage: %s [interface]\n",APP_NAME);
 	printf("\n");
 	printf("Options: \n");
 	printf(" interface  Listen on  <interface> for packages.\n");
@@ -202,7 +218,8 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 
 	printf("\nPacket number %d:\n",count);
 	count++;
-	/*define ethernet header*/
+	/*In memory:  [packet| SIZE_ETHERNET| size_ip (IP header length)| size_tcp (TCP header length)| payload]*/
+	/*define ethernet header - magical typecasting*/
 	ethernet=(struct sniff_ethernet*)(packet);
 	/*define/compute ip header offset*/
 	ip=(struct sniff_ip*)(packet + SIZE_ETHERNET);
@@ -267,7 +284,7 @@ int main(int argc,char **argv){
 	char errbuf[PCAP_ERRBUF_SIZE]; //error buffer
 	pcap_t *handle;//packet capture handle
 	
-	char filter_exp[]="tcp";//filter expression
+	char filter_exp[]="ip";//filter expression
 	struct bpf_program fp; //compiled filter program(expression)
 	bpf_u_int32 mask;//subnet mask
 	bpf_u_int32 net;//ip
@@ -283,7 +300,9 @@ int main(int argc,char **argv){
 		exit(EXIT_FAILURE);
 	}
 	else{
-		/*find a capture device if not specified on command-line*/
+		/*find a capture device if not specified on command-line
+		* pcap sets the device on its own
+		*/
 		dev=pcap_lookupdev(errbuf);
 		if(dev==NULL){
 			fprintf(stderr,"Coundn't find default devices: %s\n",errbuf);
@@ -303,30 +322,58 @@ int main(int argc,char **argv){
 	printf("Number of packets: %d\n",num_packets);
 	printf("Filter expression: %s\n",filter_exp);
 	/*open capture device*/
+	/*
+	* dev: The device
+	* SNAP_LEN: an integer which defines the maximum number of bytes to be captured by pcap.promisc
+	* 1: brings the interface into promisuous mode
+	* 1000: the read time out in milliseconds
+	* errbuf: a string to store error messages
+	* return : handle - session handler
+	*/
 	handle =pcap_open_live(dev,SNAP_LEN,1,1000,errbuf);
 	if(handle==NULL){
 		fprintf(stderr,"Couldn't open device %s: %s\n",dev,errbuf);
 		exit(EXIT_FAILURE);
 	}
-	/*make sure we're capturing on an ethernet device*/
+	/*make sure we're capturing on an ethernet device. 
+	* More information: www.tcpdump.org/linktypes.html
+	* return : a value indicating the type of link-layer headers
+	*/
 	if(pcap_datalink(handle)!=DLT_EN10MB){
 		fprintf(stderr,"%s is not an Ethernet\n",dev);
 		exit(EXIT_FAILURE);
 	}
 	
-	/*compile the fileter expression*/
+	/*compile the fileter expression
+	* After calling pcap_open_liv() and have a working sniffing session -> apply some filter.
+	* why not just use if/else:
+	* 1. pcap's filter is far more efficient - it does it directly with the BPF filter - eliinate numerous steps by having  the BPF driver do it directly
+	* 2. a lot easier
+	* before applying filter -> need to compile. to learn about the filer expression, see http://biot.com/capstats/bpf.html
+	* handle: session handler
+	* &fp: a reference to the place we will store the compiled version of filter
+	* filter_exp: filter expression - string format
+	* 0: not optimize , 1 : optimize
+	* net: network mask of the network the filter applies to
+	*/
 	if(pcap_compile(handle,&fp,filter_exp,0,net)==-1){
 		fprintf(stderr,"Couldn't parse filter %s: %s\n",filter_exp,pcap_geterr(handle));
 		exit(EXIT_FAILURE);
 	}
 	
-	/*apply the compiled filter*/
+	/*apply the compiled filter
+	* 
+	*/
 	if(pcap_setfilter(handle,&fp)==-1){
 		fprintf(stderr,"Couldn't install filter  %s: %s\n",filter_exp,pcap_geterr(handle));
 		exit(EXIT_FAILURE);
 	}
 
-	/*now we can set our callback function*/
+	/*now we can set our callback function
+	* handle: session handler
+	* num_packets: number of packet to sniff before returning
+	* got_packet: callback function
+	*/
 	pcap_loop(handle,num_packets,got_packet,NULL);
 	/*cleanup*/
 	pcap_freecode(&fp);
