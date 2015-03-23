@@ -1,0 +1,77 @@
+sniffex - Sniffer example using libpcap
+THERE IS ABSOLUTELY NO WARRANTY FOR THIS PROGRAM.
+Device: eth0
+Number of packets: 10
+Filter expression: tcp
+
+Packet number 1:
+	From: 10.0.2.15
+	To: 87.250.251.119
+	Protocol: TCP
+	Src port: 35112
+	Dst port: 80
+
+Packet number 2:
+	From: 87.250.251.119
+	To: 10.0.2.15
+	Protocol: TCP
+	Src port: 80
+	Dst port: 35112
+
+Packet number 3:
+	From: 10.0.2.15
+	To: 216.58.211.66
+	Protocol: TCP
+	Src port: 51988
+	Dst port: 80
+
+Packet number 4:
+	From: 216.58.211.66
+	To: 10.0.2.15
+	Protocol: TCP
+	Src port: 80
+	Dst port: 51988
+
+Packet number 5:
+	From: 10.0.2.15
+	To: 190.93.255.164
+	Protocol: TCP
+	Src port: 51578
+	Dst port: 80
+
+Packet number 6:
+	From: 10.0.2.15
+	To: 158.255.97.129
+	Protocol: TCP
+	Src port: 57702
+	Dst port: 80
+
+Packet number 7:
+	From: 190.93.255.164
+	To: 10.0.2.15
+	Protocol: TCP
+	Src port: 80
+	Dst port: 51578
+
+Packet number 8:
+	From: 158.255.97.129
+	To: 10.0.2.15
+	Protocol: TCP
+	Src port: 80
+	Dst port: 57702
+
+Packet number 9:
+	From: 10.0.2.15
+	To: 216.58.211.78
+	Protocol: TCP
+	Src port: 39273
+	Dst port: 80
+
+Packet number 10:
+	From: 216.58.211.78
+	To: 10.0.2.15
+	Protocol: TCP
+	Src port: 80
+	Dst port: 39273
+
+ Capture complete.
