@@ -73,6 +73,14 @@ struct sniff_tcp{
 	u_short th_sum;// Checksum
 	u_short th_urp;// urgent pointer
 };
+
+struct sniff_udp{
+	u_short uh_sport;// source port
+	u_short uh_dport;// destination port
+	u_short udp_len;// UDP length: total length of UDP header (8 bytes) + UDP data
+	u_short uh_sum;//checksum
+};
+
 /*This is the prototype of callback function - must follow in ordered to let's pcap understand and use the callback function
 * return: void - pcap_loop() wouldn't know how to handle a return value
 * *args: corresponds to the last agument of pcap_loop() - u_char *user (NULL)
@@ -210,10 +218,12 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 	const struct sniff_ethernet *ethernet;// The ethernet header
 	const struct sniff_ip *ip; // The IP header
 	const struct sniff_tcp *tcp;//The TCP header
+	const struct sniff_udp *udp;// The UDP header
 	const char *payload; //Packet payload
 	
 	int size_ip;
 	int size_tcp;
+	int size_udp;
 	int size_payload;
 
 	printf("\nPacket number %d:\n",count);
@@ -244,6 +254,17 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 		break;
 		case IPPROTO_UDP:
                 printf("        Protocol: UDP\n");
+                /*define/compute tcp header offset */
+				udp=(struct sniff_udp*)(packet+SIZE_ETHERNET+size_ip);
+				size_udp=udp->udp_len;
+				if(size_udp<8){
+					printf("	* Invalid UDP header length: %u bytes\n",size_udp);
+					return;
+				}
+
+				printf("	Src port: %d\n",ntohs(udp->uh_sport));
+				printf("	Dst port: %d\n",ntohs(udp->uh_dport));
+				printf("	UDP data: %d\n",udp_len-8);
                	return;
 		case IPPROTO_ICMP:
                 printf("        Protocol: ICMP\n");
