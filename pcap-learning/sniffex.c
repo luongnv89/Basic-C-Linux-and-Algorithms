@@ -265,6 +265,17 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 				printf("	Src port: %d\n",ntohs(udp->uh_sport));
 				printf("	Dst port: %d\n",ntohs(udp->uh_dport));
 				printf("	UDP data: %d\n",udp->udp_len-8);
+				/*define/compute tcp payload (segment) offset*/
+				payload=(u_char *)(packet + SIZE_ETHERNET+size_ip+8);
+				/* compute tcp payload (segment) size*/
+				size_payload=ntohs(ip->ip_len) - (size_ip+8);
+				/*
+				* Print payload data; it might be binary, so don't just treat it as a string.
+				*/
+				if(size_payload>0){
+					printf("	Payload(%d bytes):\n",size_payload);
+					print_payload(payload,size_payload);
+				}
                	return;
 		case IPPROTO_ICMP:
                 printf("        Protocol: ICMP\n");
