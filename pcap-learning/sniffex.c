@@ -264,7 +264,7 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 
 				printf("	Src port: %d\n",ntohs(udp->uh_sport));
 				printf("	Dst port: %d\n",ntohs(udp->uh_dport));
-				printf("	UDP data: %d\n",udp_len-8);
+				printf("	UDP data: %d\n",udp->udp_len-8);
                	return;
 		case IPPROTO_ICMP:
                 printf("        Protocol: ICMP\n");
