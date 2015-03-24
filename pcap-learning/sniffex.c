@@ -22,11 +22,11 @@
 #define ETHER_ADDR_LEN 6
 /*TYPECASTING of packet - from got_packet function*/
 
-/*Ethernet header*/
+/*Ethernet header - alway 14 bytes*/
 struct sniff_ethernet{
-	u_char ether_dhost[ETHER_ADDR_LEN]; /*destination host address*/
-	u_char ether_shost[ETHER_ADDR_LEN]; /*source host address*/
-	u_short ether_type; /*IP? ARP? RARP? etc*/
+	u_char ether_dhost[ETHER_ADDR_LEN]; /*destination host address - 6 bytes*/
+	u_char ether_shost[ETHER_ADDR_LEN]; /*source host address - 6 bytes*/
+	u_short ether_type; /*IP? ARP? RARP? etc - 2 bytes*/
 };
 
 /*IP header*/
@@ -222,6 +222,9 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 	/*In memory:  [packet| SIZE_ETHERNET| size_ip (IP header length)| size_tcp (TCP header length)| payload]*/
 	/*define ethernet header - magical typecasting*/
 	ethernet=(struct sniff_ethernet*)(packet);
+	printf("\n Ethernet source: %s \n",ethernet->ether_shost);
+	printf("\n Ethernet destination: %s \n",ethernet->ether_dhost);
+	printf("\n Ethernet type: %d \n",ethernet->ether_type);
 	/*define/compute ip header offset*/
 	ip=(struct sniff_ip*)(packet + SIZE_ETHERNET);
 	size_ip=IP_HL(ip)*4;
@@ -229,6 +232,7 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 		printf("*Invalid IP header length: %u bytes\n*",size_ip);
 		return;
 	}
+	//QUESTION: size_ip > 20??? -> mean there are some option/padding in IP Header, size_ip = size_IP-Header * 4
 
 	/*print source and destination IP addresses*/
 	printf("	From: %s\n",inet_ntoa(ip->ip_src));
@@ -251,7 +255,19 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 		printf("	Protocol: unknown");
 		return;
 	}
-	
+	/*QUESTION :
+	* TCP/IP model:
+	* -----------------------------------------------
+	* Application: HTTP, FTTP, Telnet, DHCP, PING,...
+	* --------
+	* Transport: TCP, UDP
+	* --------
+	* Network: IP, ARP, ICMP, ...
+	* --------
+	* Network interface: Ethernet, PPP, ADSL
+	* -----------------------------------------------
+	* If so then which layer ip->ip_p points to? Transport (TCP/UDP) or Network (IP)?
+	*/
 	/*
 	* Ok, this packet is TCP.
 	*/
