@@ -130,8 +130,8 @@ int main(int argc,char *argv[]){
 		shandler(0);
 	}
 	/*Capture starts*/
-	while((packet==pcap_next(handle,&header))!=0){
-		fprintf(stderr, "\n Got a packet!");
+	while((packet=pcap_next(handle,&header))!=0){
+		fprintf(stderr, "\n Got a packet! \n");
 		/** Chec ip header */
 		iphdr = (struct ip*)(packet+SIZE_ETHERNET);
 		if((size_ip=iphdr->ip_hl*4)<sizeof(struct ip))
