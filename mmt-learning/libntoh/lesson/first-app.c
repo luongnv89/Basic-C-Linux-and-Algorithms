@@ -87,6 +87,7 @@ int main(int argc,char *argv[]){
 			break;
 			case 'F':
 			filter = optarg;
+			printf("Filter: %s",optarg);
 			break;
 			default:
 				if(handle!=0)
