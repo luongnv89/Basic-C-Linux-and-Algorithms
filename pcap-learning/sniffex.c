@@ -243,10 +243,34 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 		return;
 	}
 	//QUESTION: size_ip > 20??? -> mean there are some option/padding in IP Header, size_ip = size_IP-Header * 4
-
+	/*
+	* u_char ip_vhl;//version<<4|header length >>2
+	u_char ip_tos;//type of service
+	u_short ip_len;//total length
+	u_short ip_id;//Identification
+	u_short ip_off;//fragment offset field
+	#define IP_RF 0x8000 //Reserved fragment flag
+	#define IP_DF 0x4000 //dont frangment flag
+	#define IP_MF 0x2000 // more fragment flag
+	#define IP_OFFMASK 0x1fff //mask for fragmenting bits
+	u_char ip_ttl; //Time to live
+	u_char ip_p; // protocol
+	u_short ip_sum;//checksum
+	struct in_addr ip_src,ip_dst;//Source and dest address
+	*/
 	/*print source and destination IP addresses*/
+	printf("\n - ** IP HEADER ** - \n");
+	printf("\nVersion: %s",ip->ip_vhl);
+	printf("\nType of service: %d",ip->ip_tos);
+	printf("\nTotal length: %d",ip->ip_len);
+	printf("\nId: %d",ip->ip_id);
+	printf("\nFragment offset field: %d",ip->ip_off);
+	printf("\nTime to live: %s",ip->ttl);
+	printf("\nProtocol: %s",ip->ip_p);
+	printf("\nChecksum: %s",ip->ip_sum);
 	printf("	From: %s\n",inet_ntoa(ip->ip_src));
 	printf("	To: %s\n",inet_ntoa(ip->ip_dst));
+
 	/*determine protocol*/
 	switch(ip->ip_p){
 		case IPPROTO_TCP:
@@ -261,7 +285,7 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 					printf("	* Invalid UDP header length: %u bytes\n",size_udp);
 					return;
 				}
-
+				printf("\n - ** UDP HEADER ** - \n");
 				printf("	Src port: %d\n",ntohs(udp->uh_sport));
 				printf("	Dst port: %d\n",ntohs(udp->uh_dport));
 				printf("	UDP data: %d\n",udp->udp_len-8);
@@ -298,7 +322,8 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 	* --------
 	* Network interface: Ethernet, PPP, ADSL
 	* -----------------------------------------------
-	* If so then which layer ip->ip_p points to? Transport (TCP/UDP) or Network (IP)?
+	* If so then which layer ip->ip_p points to? Transport (TCP/UDP) or Network (IP)? 
+	* -> It is possible to have IP <-> IP
 	*/
 	/*
 	* Ok, this packet is TCP.
@@ -311,9 +336,40 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 		printf("	* Invalid TCP header length: %u bytes\n",size_tcp);
 		return;
 	}
+	/**
+	 * struct sniff_tcp{
+		u_short th_sport;//source port
+		u_short th_dport;//Destination port
+		tcp_seq th_seq;// sequence number
+		tcp_seq th_ack; //acknowledgement number
+		u_char th_offx2; //Data offset, rsvd
 
+	#define TH_OFF(th) (((th)->th_offx2 & 0xf0)>>4)
+		u_char th_flags;
+		#define TH_FIN 0x01
+		#define TH_SYN 0x02
+		#define TH_RST 0x04
+		#define TH_PUSH 0x08
+		#define TH_ACK 0x10
+		#define TH_URG 0x20
+		#define TH_ECE 0x40
+		#define TH_CWR 0x80
+		#define TH_FLAGS (TH_FIN|TH_SYN|TH_RST|TH_ACK|TH_URG|TH_ECE|TH_CWR)
+		u_short th_win; //Window
+		u_short th_sum;// Checksum
+		u_short th_urp;// urgent pointer
+	};
+	 */
+	printf("\n - ** TCP HEADER ** - \n");
 	printf("	Src port: %d\n",ntohs(tcp->th_sport));
 	printf("	Dst port: %d\n",ntohs(tcp->th_dport));
+	printf("	Sequence number: %d\n",tcp->th_seq);
+	printf("	Acknowledgement number: %d\n",tcp->th_ack);
+	printf("	Data offset: %d\n",tcp->th_offx2);
+	printf("	Flag: %s\n",tcp->th_flags);
+	printf("	Window: %d\n",tcp->th_win);
+	printf("	Checksum: %d\n",tcp->th_sum);
+	printf("	Urgent pointer: %d\n",tcp->th_urp);
 	/*define/compute tcp payload (segment) offset*/
 	payload=(u_char *)(packet + SIZE_ETHERNET+size_ip+size_tcp);
 	/* compute tcp payload (segment) size*/
