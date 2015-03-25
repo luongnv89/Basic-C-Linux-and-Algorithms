@@ -135,7 +135,9 @@ int main(int argc,char *argv[]){
 		fprintf(stderr, "\n Got a packet! \n");
 		/** Chec ip header */
 		iphdr = (struct ip*)(packet+SIZE_ETHERNET);
-		if((size_ip=iphdr->ip_hl*4)<sizeof(struct ip))
+		size_ip=iphdr->ip_hl*4;
+		printf("IP header size : %d \n",size_ip);
+		if((size_ip)<sizeof(struct ip))
 			continue;
 		printf("IP header size ok! \n");
 		/* If it isn't a TCP segment */
