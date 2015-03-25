@@ -1,0 +1,334 @@
+sniffex - Sniffer example using libpcap
+THERE IS ABSOLUTELY NO WARRANTY FOR THIS PROGRAM.
+Device: eth0
+Number of packets: 10
+Filter expression: udp
+
+Packet number 1:
+
+Packet header time stamp 1427274797.494767:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 16128
+Id: 63316
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: *	From: 10.0.2.15
+	To: 208.67.222.222
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 41966
+	Dst port: 53
+	UDP data: 11000
+	Payload(35 bytes):
+00000 06 d8 01 00 00 01 00 00  00 00 00 00 0d 73 74 61  .............sta
+00016 63 6b 6f 76 65 72 66 6c  6f 77 03 63 6f 6d 00 00  ckoverflow.com..
+00032 01 00 01                ...
+
+Packet number 2:
+
+Packet header time stamp 1427274797.495018:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 16128
+Id: 63572
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: *	From: 10.0.2.15
+	To: 208.67.222.222
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 55738
+	Dst port: 53
+	UDP data: 11000
+	Payload(35 bytes):
+00000 96 3a 01 00 00 01 00 00  00 00 00 00 0d 73 74 61  .:...........sta
+00016 63 6b 6f 76 65 72 66 6c  6f 77 03 63 6f 6d 00 00  ckoverflow.com..
+00032 1c 00 01                ...
+
+Packet number 3:
+
+Packet header time stamp 1427274797.495484:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 16128
+Id: 63828
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: *	From: 10.0.2.15
+	To: 208.67.222.222
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 4057
+	Dst port: 53
+	UDP data: 11000
+	Payload(35 bytes):
+00000 3c 1e 01 00 00 01 00 00  00 00 00 00 0d 73 74 61  <............sta
+00016 63 6b 6f 76 65 72 66 6c  6f 77 03 63 6f 6d 00 00  ckoverflow.com..
+00032 01 00 01                ...
+
+Packet number 4:
+
+Packet header time stamp 1427274797.508959:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 20224
+Id: 54806
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: ¨	From: 208.67.222.222
+	To: 10.0.2.15
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 53
+	Dst port: 41966
+	UDP data: 15096
+	Payload(51 bytes):
+00000 06 d8 81 80 00 01 00 01  00 00 00 00 0d 73 74 61  .............sta
+00016 63 6b 6f 76 65 72 66 6c  6f 77 03 63 6f 6d 00 00  ckoverflow.com..
+00032 01 00 01 c0 0c 00 01 00  01 00 00 00 f7 00 04 c6  ................
+00048 fc ce 8c                ...
+
+Packet number 5:
+
+Packet header time stamp 1427274797.515890:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 36608
+Id: 55062
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: ¨	From: 208.67.222.222
+	To: 10.0.2.15
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 53
+	Dst port: 55738
+	UDP data: 31480
+	Payload(115 bytes):
+00000 96 3a 81 80 00 01 00 00  00 01 00 00 0d 73 74 61  .:...........sta
+00016 63 6b 6f 76 65 72 66 6c  6f 77 03 63 6f 6d 00 00  ckoverflow.com..
+00032 1c 00 01 c0 0c 00 06 00  01 00 00 08 35 00 44 08  ............5.D.
+00048 63 66 2d 64 6e 73 30 31  0d 73 74 61 63 6b 6f 76  cf-dns01.stackov
+00064 65 72 66 6c 6f 77 03 63  6f 6d 00 03 64 6e 73 0a  erflow.com..dns.
+00080 63 6c 6f 75 64 66 6c 61  72 65 03 63 6f 6d 00 78  cloudflare.com.x
+00096 40 7e 2a 00 00 27 10 00  00 09 60 00 09 3a 80 00  @~*..'....`..:..
+00112 00 0e 10                ...
+
+Packet number 6:
+
+Packet header time stamp 1427274797.515890:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 20224
+Id: 55318
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: ¨	From: 208.67.222.222
+	To: 10.0.2.15
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 53
+	Dst port: 4057
+	UDP data: 15096
+	Payload(51 bytes):
+00000 3c 1e 81 80 00 01 00 01  00 00 00 00 0d 73 74 61  <............sta
+00016 63 6b 6f 76 65 72 66 6c  6f 77 03 63 6f 6d 00 00  ckoverflow.com..
+00032 01 00 01 c0 0c 00 01 00  01 00 00 00 f7 00 04 c6  ................
+00048 fc ce 8c                ...
+
+Packet number 7:
+
+Packet header time stamp 1427274797.779918:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 16640
+Id: 4693
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: *	From: 10.0.2.15
+	To: 208.67.222.222
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 12488
+	Dst port: 53
+	UDP data: 11512
+	Payload(37 bytes):
+00000 c2 44 01 00 00 01 00 00  00 00 00 00 04 61 6a 61  .D...........aja
+00016 78 0a 67 6f 6f 67 6c 65  61 70 69 73 03 63 6f 6d  x.googleapis.com
+00032 00 00 01 00 01              .....
+
+Packet number 8:
+
+Packet header time stamp 1427274797.780041:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 16640
+Id: 4949
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: *	From: 10.0.2.15
+	To: 208.67.222.222
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 7052
+	Dst port: 53
+	UDP data: 11512
+	Payload(37 bytes):
+00000 d5 6d 01 00 00 01 00 00  00 00 00 00 04 61 6a 61  .m...........aja
+00016 78 0a 67 6f 6f 67 6c 65  61 70 69 73 03 63 6f 6d  x.googleapis.com
+00032 00 00 1c 00 01              .....
+
+Packet number 9:
+
+Packet header time stamp 1427274797.780413:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 16640
+Id: 5205
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: *	From: 10.0.2.15
+	To: 208.67.222.222
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 46123
+	Dst port: 53
+	UDP data: 11512
+	Payload(37 bytes):
+00000 0f be 01 00 00 01 00 00  00 00 00 00 04 61 6a 61  .............aja
+00016 78 0a 67 6f 6f 67 6c 65  61 70 69 73 03 63 6f 6d  x.googleapis.com
+00032 00 00 01 00 01              .....
+
+Packet number 10:
+
+Packet header time stamp 1427274797.781220:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 15616
+Id: 5461
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: *	From: 10.0.2.15
+	To: 208.67.222.222
+        Protocol: UDP
+
+ - ** UDP HEADER ** - 
+	Src port: 4029
+	Dst port: 53
+	UDP data: 10488
+	Payload(33 bytes):
+00000 1b e2 01 00 00 01 00 00  00 00 00 00 03 63 64 6e  .............cdn
+00016 07 73 73 74 61 74 69 63  03 6e 65 74 00 00 01 00  .sstatic.net....
+00032 01                  .
+
+ Capture complete.

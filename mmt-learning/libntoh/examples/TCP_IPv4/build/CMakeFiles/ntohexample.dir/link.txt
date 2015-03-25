@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Os -O2 -lpcap -g -O3 -DNDEBUG    CMakeFiles/ntohexample.dir/example.c.o  -o ntohexample  -L/usr/local/lib -rdynamic -lpcap -lntoh -lpthread -Wl,-rpath,/usr/local/lib 

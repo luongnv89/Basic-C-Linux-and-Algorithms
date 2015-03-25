@@ -1,0 +1,347 @@
+sniffex - Sniffer example using libpcap
+THERE IS ABSOLUTELY NO WARRANTY FOR THIS PROGRAM.
+Device: eth0
+Number of packets: 10
+Filter expression: ip
+
+Packet number 1:
+
+Packet header time stamp 1427274843.011924:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 53681
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: Ñ	From: 10.0.2.15
+	To: 216.58.211.68
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 60175
+	Dst port: 80
+	Sequence number: 617047308
+	Acknowledgement number: -1381324798
+	Data offset: 80
+	Flag: 
+	Window: 16501
+	Checksum: 43191
+	Urgent pointer: 0
+
+Packet number 2:
+
+Packet header time stamp 1427274843.013307:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 22041
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: ©	From: 216.58.211.68
+	To: 10.0.2.15
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 80
+	Dst port: 60175
+	Sequence number: -1381324798
+	Acknowledgement number: 633824524
+	Data offset: 80
+	Flag: 
+	Window: 65535
+	Checksum: 1676
+	Urgent pointer: 0
+
+Packet number 3:
+
+Packet header time stamp 1427274843.044643:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 7040
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: 	From: 10.0.2.15
+	To: 216.58.211.68
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 60176
+	Dst port: 80
+	Sequence number: 452462772
+	Acknowledgement number: 161851650
+	Data offset: 80
+	Flag: 
+	Window: 16501
+	Checksum: 43191
+	Urgent pointer: 0
+
+Packet number 4:
+
+Packet header time stamp 1427274843.045272:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 22297
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: ©	From: 216.58.211.68
+	To: 10.0.2.15
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 80
+	Dst port: 60176
+	Sequence number: 161851650
+	Acknowledgement number: 469239988
+	Data offset: 80
+	Flag: 
+	Window: 65535
+	Checksum: 3769
+	Urgent pointer: 0
+
+Packet number 5:
+
+Packet header time stamp 1427274843.587819:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 3129
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: J	From: 10.0.2.15
+	To: 216.58.211.66
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 49545
+	Dst port: 80
+	Sequence number: 1968946416
+	Acknowledgement number: -236675326
+	Data offset: 80
+	Flag: 
+	Window: 134
+	Checksum: 42679
+	Urgent pointer: 0
+
+Packet number 6:
+
+Packet header time stamp 1427274843.588262:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 22553
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: ©	From: 216.58.211.66
+	To: 10.0.2.15
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 80
+	Dst port: 49545
+	Sequence number: -236675326
+	Acknowledgement number: 1985723632
+	Data offset: 80
+	Flag: 
+	Window: 65535
+	Checksum: 43778
+	Urgent pointer: 0
+
+Packet number 7:
+
+Packet header time stamp 1427274844.163206:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 22809
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: è	From: 103.31.6.35
+	To: 10.0.2.15
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 80
+	Dst port: 50300
+	Sequence number: -1619590141
+	Acknowledgement number: 2126755147
+	Data offset: 80
+	Flag: 
+	Window: 65535
+	Checksum: 57063
+	Urgent pointer: 0
+
+Packet number 8:
+
+Packet header time stamp 1427274844.163233:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 23065
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: U	From: 141.101.114.59
+	To: 10.0.2.15
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 80
+	Dst port: 51706
+	Sequence number: 562692355
+	Acknowledgement number: -2003115700
+	Data offset: 80
+	Flag: 
+	Window: 65535
+	Checksum: 19813
+	Urgent pointer: 0
+
+Packet number 9:
+
+Packet header time stamp 1427274844.163236:
+
+ Ethernet source: RT 
+
+ Ethernet destination:  
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 23321
+Fragment offset field: 0
+Time to live: 64
+Protocol: 
+Checksum: U	From: 141.101.114.59
+	To: 10.0.2.15
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 80
+	Dst port: 51703
+	Sequence number: -1332740093
+	Acknowledgement number: 2134032682
+	Data offset: 80
+	Flag: 
+	Window: 65535
+	Checksum: 60392
+	Urgent pointer: 0
+
+Packet number 10:
+
+Packet header time stamp 1427274844.163383:
+
+ Ethernet source:  
+
+ Ethernet destination: RT 
+
+ Ethernet type: 8 
+
+ - ** IP HEADER ** - 
+
+Version: E
+Type of service: 0
+Total length: 10240
+Id: 28815
+Fragment offset field: 64
+Time to live: 64
+Protocol: 
+Checksum: Ÿ	From: 10.0.2.15
+	To: 141.101.114.59
+	Protocol: TCP
+
+ - ** TCP HEADER ** - 
+	Src port: 51703
+	Dst port: 80
+	Sequence number: 2134032682
+	Acknowledgement number: -1315962877
+	Data offset: 80
+	Flag: 
+	Window: 28793
+	Checksum: 51723
+	Urgent pointer: 0
+
+ Capture complete.
