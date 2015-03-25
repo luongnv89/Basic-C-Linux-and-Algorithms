@@ -27,8 +27,8 @@ void shandler(int s){
 	exit(s);
 }
 
-void tcp_callback(pntoh_tcp_stream_t stream, pntoh_tcp_peer_t orig, pntoh_tcp_peer_t dest, pntoh_tcp_segment_t seg, in reason, int extra){
-	fprintf(stderr, "\n", something happening header"");
+void tcp_callback(pntoh_tcp_stream_t stream, pntoh_tcp_peer_t orig, pntoh_tcp_peer_t dest, pntoh_tcp_segment_t seg, int reason, int extra){
+	fprintf(stderr, "\n something happening header");
 }
 int main(int argc,char *argv[]){
 	/*Parameter parsing*/
@@ -122,7 +122,7 @@ int main(int argc,char *argv[]){
 	}
 	signal(SIGINT,&shandler);
 	/* Initializes libntoh (TCP and IPv4) */
-	ntho_init();
+	ntoh_init();
 	/* creates a new TCP session*/
 	if(!(tcpsession=ntoh_tcp_new_session(0,0,&error))){
 		fprintf(stderr, "\n[e] Error %d creating the TCP session: %s",error,ntoh_get_errdesc(error));
