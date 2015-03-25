@@ -104,5 +104,5 @@ int main(int argc,char *argv[]){
 
 	shandler(0);
 	//dummy result
-	/return 0;
+	return 0;
 }
