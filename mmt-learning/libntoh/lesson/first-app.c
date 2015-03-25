@@ -1,3 +1,8 @@
+/**
+ * Fist example of using libntoh.
+ * Source: https://github.com/sch3m4/libntoh/wiki/7.-Our-first-application-example
+ */
+#include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
 #include <getopt.h>
