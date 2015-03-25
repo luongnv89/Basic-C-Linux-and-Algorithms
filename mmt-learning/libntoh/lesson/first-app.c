@@ -58,7 +58,7 @@ int main(int argc,char *argv[]){
 			break;
 			case 'f':
 			source=optarg;
-			handle=pcap_open_live(optarg,errbuf);
+			handle=pcap_open_offline(optarg,errbuf);
 			break;
 			case 'F':
 			filter = optarg;
