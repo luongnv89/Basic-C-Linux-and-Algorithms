@@ -131,7 +131,7 @@ int main(int argc,char *argv[]){
 	}
 	printf("create new tcp session ok! \n");
 	/*Capture starts*/
-	while((packet=pcap_next(handle,&header))!=0){
+	while((packet==pcap_next(handle,&header))!=0){
 		fprintf(stderr, "\n Got a packet! \n");
 		/** Chec ip header */
 		iphdr = (struct ip*)(packet+SIZE_ETHERNET);

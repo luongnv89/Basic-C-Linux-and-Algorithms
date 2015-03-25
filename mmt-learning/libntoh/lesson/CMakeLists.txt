@@ -16,7 +16,7 @@ ADD_DEFINITIONS ( ${NTOH_CFLAGS} )
 SET ( CMAKE_BUILD_TYPE Release )
 
 # set source files and flags
-SET ( LIBNTOHEXAMPLE_SRCS first-app.c )
+SET ( LIBNTOHEXAMPLE_SRCS second-app.c )
 SET ( CMAKE_C_FLAGS "-Wall -Os -O2 -lpcap -g" )
 
 # set target from source
