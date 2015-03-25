@@ -87,7 +87,7 @@ int main(int argc,char *argv[]){
 			break;
 			case 'F':
 			filter = optarg;
-			printf("Filter: %s",optarg);
+			printf("Filter: %s \n",optarg);
 			break;
 			default:
 				if(handle!=0)
@@ -100,19 +100,19 @@ int main(int argc,char *argv[]){
 		fprintf(stderr, "\n[e] Error loading %s: %s\n",source,errbuf);
 		exit(-2);
 	}
-
+	printf("Handle ok! \n");
 	if(pcap_compile(handle,&fp,filter,0,0)<0){
 		fprintf(stderr, "\n[e] Error compiling filter \"%s\": %s \n\n",filter,pcap_geterr(handle));
 		pcap_close(handle);
 		exit(-3);
 	}
-
+	printf("Compile filter ok! \n");
 	if(pcap_setfilter(handle,&fp)<0){
 		fprintf(stderr, "\n[e] Cannot set filter \"%s\": %s \n\n",filter,pcap_geterr(handle));
 		pcap_close(handle);
 		exit(-4);
 	}
-
+	printf("Set filter ok! \n");
 	pcap_freecode(&fp);
 
 	/*Verify datalink*/
@@ -121,14 +121,18 @@ int main(int argc,char *argv[]){
 		pcap_close(handle);
 		exit(-5);
 	}
+	printf("Data link OK! \n");
 	signal(SIGINT,&shandler);
+	printf("signal ok! \n");
 	/* Initializes libntoh (TCP and IPv4) */
 	ntoh_init();
+	printf("ntoh_init() ok! \n");
 	/* creates a new TCP session*/
 	if(!(tcpsession=ntoh_tcp_new_session(0,0,&error))){
 		fprintf(stderr, "\n[e] Error %d creating the TCP session: %s",error,ntoh_get_errdesc(error));
 		shandler(0);
 	}
+	printf("create new tcp session ok! \n");
 	/*Capture starts*/
 	while((packet=pcap_next(handle,&header))!=0){
 		fprintf(stderr, "\n Got a packet! \n");
@@ -136,13 +140,16 @@ int main(int argc,char *argv[]){
 		iphdr = (struct ip*)(packet+SIZE_ETHERNET);
 		if((size_ip=iphdr->ip_hl*4)<sizeof(struct ip))
 			continue;
+		printf("IP header size ok! \n");
 		/* If it isn't a TCP segment */
 		if(iphdr->ip_p!=IPPROTO_TCP)
 			continue;
+		printf("TCP protocol ok! \n");
 		/*check TCP header */
 		tcphdr = (struct tcphdr*)((unsigned char*)iphdr+size_ip);
 		if((size_tcp=tcphdr->th_off*4)<sizeof(struct tcphdr))
 			continue;
+		printf("TCP header size ok! \n");
 		/* fill TCP tuple5 fields */
 		ntoh_tcp_get_tuple5(iphdr,tcphdr,&tcpt5);
 
@@ -155,6 +162,7 @@ int main(int argc,char *argv[]){
 				fprintf(stderr, "%s:%d",inet_ntoa(*(struct in_addr*)&tcpt5.destination),ntohs(tcpt5.dport));
 			}
 		}
+		printf("End of a while loop! \n");
 	}
 
 	shandler(0);
