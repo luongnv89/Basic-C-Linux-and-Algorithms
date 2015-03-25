@@ -49,37 +49,37 @@ include CMakeFiles/ntohexample.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ntohexample.dir/flags.make
 
-CMakeFiles/ntohexample.dir/second-app.c.o: CMakeFiles/ntohexample.dir/flags.make
-CMakeFiles/ntohexample.dir/second-app.c.o: ../second-app.c
+CMakeFiles/ntohexample.dir/first-app.c.o: CMakeFiles/ntohexample.dir/flags.make
+CMakeFiles/ntohexample.dir/first-app.c.o: ../first-app.c
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/percevio/projects/c/mmt-learning/libntoh/lesson/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/ntohexample.dir/second-app.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/ntohexample.dir/second-app.c.o   -c /home/percevio/projects/c/mmt-learning/libntoh/lesson/second-app.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/ntohexample.dir/first-app.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/ntohexample.dir/first-app.c.o   -c /home/percevio/projects/c/mmt-learning/libntoh/lesson/first-app.c
 
-CMakeFiles/ntohexample.dir/second-app.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ntohexample.dir/second-app.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/percevio/projects/c/mmt-learning/libntoh/lesson/second-app.c > CMakeFiles/ntohexample.dir/second-app.c.i
+CMakeFiles/ntohexample.dir/first-app.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ntohexample.dir/first-app.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/percevio/projects/c/mmt-learning/libntoh/lesson/first-app.c > CMakeFiles/ntohexample.dir/first-app.c.i
 
-CMakeFiles/ntohexample.dir/second-app.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ntohexample.dir/second-app.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/percevio/projects/c/mmt-learning/libntoh/lesson/second-app.c -o CMakeFiles/ntohexample.dir/second-app.c.s
+CMakeFiles/ntohexample.dir/first-app.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ntohexample.dir/first-app.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/percevio/projects/c/mmt-learning/libntoh/lesson/first-app.c -o CMakeFiles/ntohexample.dir/first-app.c.s
 
-CMakeFiles/ntohexample.dir/second-app.c.o.requires:
-.PHONY : CMakeFiles/ntohexample.dir/second-app.c.o.requires
+CMakeFiles/ntohexample.dir/first-app.c.o.requires:
+.PHONY : CMakeFiles/ntohexample.dir/first-app.c.o.requires
 
-CMakeFiles/ntohexample.dir/second-app.c.o.provides: CMakeFiles/ntohexample.dir/second-app.c.o.requires
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/second-app.c.o.provides.build
-.PHONY : CMakeFiles/ntohexample.dir/second-app.c.o.provides
+CMakeFiles/ntohexample.dir/first-app.c.o.provides: CMakeFiles/ntohexample.dir/first-app.c.o.requires
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/first-app.c.o.provides.build
+.PHONY : CMakeFiles/ntohexample.dir/first-app.c.o.provides
 
-CMakeFiles/ntohexample.dir/second-app.c.o.provides.build: CMakeFiles/ntohexample.dir/second-app.c.o
+CMakeFiles/ntohexample.dir/first-app.c.o.provides.build: CMakeFiles/ntohexample.dir/first-app.c.o
 
 # Object files for target ntohexample
 ntohexample_OBJECTS = \
-"CMakeFiles/ntohexample.dir/second-app.c.o"
+"CMakeFiles/ntohexample.dir/first-app.c.o"
 
 # External object files for target ntohexample
 ntohexample_EXTERNAL_OBJECTS =
 
-ntohexample: CMakeFiles/ntohexample.dir/second-app.c.o
+ntohexample: CMakeFiles/ntohexample.dir/first-app.c.o
 ntohexample: CMakeFiles/ntohexample.dir/build.make
 ntohexample: CMakeFiles/ntohexample.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable ntohexample"
@@ -89,7 +89,7 @@ ntohexample: CMakeFiles/ntohexample.dir/link.txt
 CMakeFiles/ntohexample.dir/build: ntohexample
 .PHONY : CMakeFiles/ntohexample.dir/build
 
-CMakeFiles/ntohexample.dir/requires: CMakeFiles/ntohexample.dir/second-app.c.o.requires
+CMakeFiles/ntohexample.dir/requires: CMakeFiles/ntohexample.dir/first-app.c.o.requires
 .PHONY : CMakeFiles/ntohexample.dir/requires
 
 CMakeFiles/ntohexample.dir/clean:

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/percevio/projects/c/mmt-learning/libntoh/lesson/second-app.c
+/home/percevio/projects/c/mmt-learning/libntoh/lesson/first-app.c
 stdlib.h
 -
 stdio.h

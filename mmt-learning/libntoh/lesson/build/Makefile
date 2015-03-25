@@ -111,29 +111,29 @@ ntohexample/fast:
 	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/build
 .PHONY : ntohexample/fast
 
-second-app.o: second-app.c.o
-.PHONY : second-app.o
+first-app.o: first-app.c.o
+.PHONY : first-app.o
 
 # target to build an object file
-second-app.c.o:
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/second-app.c.o
-.PHONY : second-app.c.o
+first-app.c.o:
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/first-app.c.o
+.PHONY : first-app.c.o
 
-second-app.i: second-app.c.i
-.PHONY : second-app.i
+first-app.i: first-app.c.i
+.PHONY : first-app.i
 
 # target to preprocess a source file
-second-app.c.i:
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/second-app.c.i
-.PHONY : second-app.c.i
+first-app.c.i:
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/first-app.c.i
+.PHONY : first-app.c.i
 
-second-app.s: second-app.c.s
-.PHONY : second-app.s
+first-app.s: first-app.c.s
+.PHONY : first-app.s
 
 # target to generate assembly for a file
-second-app.c.s:
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/second-app.c.s
-.PHONY : second-app.c.s
+first-app.c.s:
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/first-app.c.s
+.PHONY : first-app.c.s
 
 # Help Target
 help:
@@ -144,9 +144,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... ntohexample"
 	@echo "... rebuild_cache"
-	@echo "... second-app.o"
-	@echo "... second-app.i"
-	@echo "... second-app.s"
+	@echo "... first-app.o"
+	@echo "... first-app.i"
+	@echo "... first-app.s"
 .PHONY : help
 
 

@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/percevio/projects/c/mmt-learning/libntoh/lesson/second-app.c" "/home/percevio/projects/c/mmt-learning/libntoh/lesson/build/CMakeFiles/ntohexample.dir/second-app.c.o"
+  "/home/percevio/projects/c/mmt-learning/libntoh/lesson/first-app.c" "/home/percevio/projects/c/mmt-learning/libntoh/lesson/build/CMakeFiles/ntohexample.dir/first-app.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 
