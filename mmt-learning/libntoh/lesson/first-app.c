@@ -134,36 +134,67 @@ int main(int argc,char *argv[]){
 	}
 	printf("create new tcp session ok! \n");
 	/*Capture starts*/
-	while((packet=pcap_next(handle,&header))!=0){
-		fprintf(stderr, "\n Got a packet! \n");
-		/** Chec ip header */
-		iphdr = (struct ip*)(packet+SIZE_ETHERNET);
-		if((size_ip=iphdr->ip_hl*4)<sizeof(struct ip))
-			continue;
-		printf("IP header size ok! \n");
-		/* If it isn't a TCP segment */
-		if(iphdr->ip_p!=IPPROTO_TCP)
-			continue;
-		printf("TCP protocol ok! \n");
-		/*check TCP header */
-		tcphdr = (struct tcphdr*)((unsigned char*)iphdr+size_ip);
-		if((size_tcp=tcphdr->th_off*4)<sizeof(struct tcphdr))
-			continue;
-		printf("TCP header size ok! \n");
-		/* fill TCP tuple5 fields */
-		ntoh_tcp_get_tuple5(iphdr,tcphdr,&tcpt5);
+	/* capture starts */
+	while ( ( packet = pcap_next( handle, &header ) ) != 0 )
+	{
+	    /* check IP header */
+	    iphdr = (struct ip*) ( packet + SIZE_ETHERNET );
+	    if ( ( size_ip = iphdr->ip_hl * 4 ) < sizeof ( struct ip ) )
+	        continue;
 
-		/* look for this TCP stream */
-		if(!(tcpstream=ntoh_tcp_find_stream(tcpsession,&tcpt5))){
-			if(!(tcpstream=ntoh_tcp_new_stream(tcpsession,&tcpt5,&tcp_callback,0,&error,1,1)))
-				fprintf(stderr, "\n[e] Error %d creating new stream: %s",error,ntoh_get_errdesc(error));
-			else{
-				fprintf(stderr, "\n[i] New stream added! %s:%d --> ",inet_ntoa(*(struct in_addr*)&tcpt5.source),ntohs(tcpt5.sport));
-				fprintf(stderr, "%s:%d",inet_ntoa(*(struct in_addr*)&tcpt5.destination),ntohs(tcpt5.dport));
-			}
-		}
-		printf("End of a while loop! \n");
+	    /* if it isn't a TCP segment */
+	    if ( iphdr->ip_p != IPPROTO_TCP )
+	        continue;
+
+	    /* check TCP header */
+	    tcphdr = (struct tcphdr*)((unsigned char*)iphdr + size_ip);
+	    if ( (size_tcp = tcphdr->th_off * 4) < sizeof(struct tcphdr) )
+	        continue;
+
+	    /* fill TCP tuple5 fields */
+	    ntoh_tcp_get_tuple5 ( iphdr , tcphdr , &tcpt5 );
+
+	    /* look for this TCP stream */
+	    if ( !(tcpstream = ntoh_tcp_find_stream ( tcpsession , &tcpt5 )) )
+	    {
+	        if ( ! ( tcpstream = ntoh_tcp_new_stream( tcpsession , &tcpt5, &tcp_callback , 0 , &error,1,1) ) )
+	            fprintf ( stderr , "\n[e] Error %d creating new stream: %s" , error , ntoh_get_errdesc ( error ) );
+	        else{
+	            fprintf ( stderr , "\n[i] New stream added! %s:%d --> " , inet_ntoa ( *(struct in_addr*)&tcpt5.source ) , ntohs ( tcpt5.sport ) );
+	            fprintf ( stderr , "%s:%d" , inet_ntoa ( *(struct in_addr*)&tcpt5.destination ) , ntohs ( tcpt5.dport ) );
+	        }
+	    }
 	}
+	// while((packet=pcap_next(handle,&header))!=0){
+	// 	fprintf(stderr, "\n Got a packet! \n");
+	// 	/** Chec ip header */
+	// 	iphdr = (struct ip*)(packet+SIZE_ETHERNET);
+	// 	if((size_ip=iphdr->ip_hl*4)<sizeof(struct ip))
+	// 		continue;
+	// 	printf("IP header size ok! \n");
+	// 	/* If it isn't a TCP segment */
+	// 	if(iphdr->ip_p!=IPPROTO_TCP)
+	// 		continue;
+	// 	printf("TCP protocol ok! \n");
+	// 	/*check TCP header */
+	// 	tcphdr = (struct tcphdr*)((unsigned char*)iphdr+size_ip);
+	// 	if((size_tcp=tcphdr->th_off*4)<sizeof(struct tcphdr))
+	// 		continue;
+	// 	printf("TCP header size ok! \n");
+	// 	/* fill TCP tuple5 fields */
+	// 	ntoh_tcp_get_tuple5(iphdr,tcphdr,&tcpt5);
+
+	// 	/* look for this TCP stream */
+	// 	if(!(tcpstream=ntoh_tcp_find_stream(tcpsession,&tcpt5))){
+	// 		if(!(tcpstream=ntoh_tcp_new_stream(tcpsession,&tcpt5,&tcp_callback,0,&error,1,1)))
+	// 			fprintf(stderr, "\n[e] Error %d creating new stream: %s",error,ntoh_get_errdesc(error));
+	// 		else{
+	// 			fprintf(stderr, "\n[i] New stream added! %s:%d --> ",inet_ntoa(*(struct in_addr*)&tcpt5.source),ntohs(tcpt5.sport));
+	// 			fprintf(stderr, "%s:%d",inet_ntoa(*(struct in_addr*)&tcpt5.destination),ntohs(tcpt5.dport));
+	// 		}
+	// 	}
+	// 	printf("End of a while loop! \n");
+	// }
 
 	shandler(0);
 	//dummy result
