@@ -260,12 +260,12 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 	*/
 	/*print source and destination IP addresses*/
 	printf("\n - ** IP HEADER ** - \n");
-	printf("\nVersion: %s",ip->ip_vhl);
+	printf("\nVersion: %c",ip->ip_vhl);
 	printf("\nType of service: %d",ip->ip_tos);
 	printf("\nTotal length: %d",ip->ip_len);
 	printf("\nId: %d",ip->ip_id);
 	printf("\nFragment offset field: %d",ip->ip_off);
-	printf("\nTime to live: %s",ip->ttl);
+	printf("\nTime to live: %d",ip->ip_ttl);
 	printf("\nProtocol: %s",ip->ip_p);
 	printf("\nChecksum: %s",ip->ip_sum);
 	printf("	From: %s\n",inet_ntoa(ip->ip_src));
