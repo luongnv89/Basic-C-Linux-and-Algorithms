@@ -389,7 +389,7 @@ int main(int argc,char **argv){
 	char errbuf[PCAP_ERRBUF_SIZE]; //error buffer
 	pcap_t *handle;//packet capture handle
 	
-	char filter_exp[]="udp";//filter expression
+	char filter_exp[]="ip";//filter expression
 	struct bpf_program fp; //compiled filter program(expression)
 	bpf_u_int32 mask;//subnet mask
 	bpf_u_int32 net;//ip
