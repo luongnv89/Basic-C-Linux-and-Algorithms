@@ -17,19 +17,16 @@ pcap_t *handle;
 //Session handle
 void shandler(int s){
 	if(s!=0)
-		/**
-		 * More detail about signal(): http://pubs.opengroup.org/onlinepubs/007908799/xsh/signal.html
-		 */
 		signal(s,&shandler);
 	pcap_close(handle);
-	ntoh_exit();
+	// ntoh_exit();
 	fprintf(stderr, "\n\n");
 	exit(s);
 }
 
-void tcp_callback(pntoh_tcp_stream_t stream, pntoh_tcp_peer_t orig, pntoh_tcp_peer_t dest, pntoh_tcp_segment_t seg, int reason, int extra){
-	fprintf(stderr, "\n something happening header");
-}
+// void tcp_callback(pntoh_tcp_stream_t stream, pntoh_tcp_peer_t orig, pntoh_tcp_peer_t dest, pntoh_tcp_segment_t seg, int reason, int extra){
+// 	fprintf(stderr, "\n something happening header");
+// }
 int main(int argc,char *argv[]){
 	/*Parameter parsing*/
 	int c;
@@ -42,16 +39,16 @@ int main(int argc,char *argv[]){
 	const unsigned char *packet=0;
 	struct pcap_pkthdr header;
 	/**TCP processing*/
-	pntoh_tcp_session_t tcpsession = 0;
-	ntoh_tcp_tuple5_t tcpt5={0};
-	pntoh_tcp_stream_t tcpstream = 0;
-	unsigned int error=0;
+	// pntoh_tcp_session_t tcpsession = 0;
+	// ntoh_tcp_tuple5_t tcpt5={0};
+	// pntoh_tcp_stream_t tcpstream = 0;
+	// unsigned int error=0;
 
 	/** TCP and IP headers dissection */
-	struct ip *iphdr = 0;
-	struct tcphdr *tcphdr = 0;
-	size_t size_ip=0;
-	size_t size_tcp=0;
+	// struct ip *iphdr = 0;
+	// struct tcphdr *tcphdr = 0;
+	// size_t size_ip=0;
+	// size_t size_tcp=0;
 
 	fprintf(stderr, "\n[i] libntoh version: %s\n",ntoh_version());
 
