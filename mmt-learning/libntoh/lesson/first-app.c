@@ -103,7 +103,7 @@ int main(int argc,char *argv[]){
 	signal(SIGINT,&shandler);
 
 	/*Capture starts*/
-	while((packet==pcap_next(handle,&header))!=0){
+	while((packet=pcap_next(handle,&header))!=0){
 		fprintf(stderr, "\n Got a packet!");
 	}
 
