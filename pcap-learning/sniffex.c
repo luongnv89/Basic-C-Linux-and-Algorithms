@@ -266,8 +266,8 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 	printf("\nId: %d",ip->ip_id);
 	printf("\nFragment offset field: %d",ip->ip_off);
 	printf("\nTime to live: %d",ip->ip_ttl);
-	printf("\nProtocol: %s",ip->ip_p);
-	printf("\nChecksum: %s",ip->ip_sum);
+	printf("\nProtocol: %c",ip->ip_p);
+	printf("\nChecksum: %c",ip->ip_sum);
 	printf("	From: %s\n",inet_ntoa(ip->ip_src));
 	printf("	To: %s\n",inet_ntoa(ip->ip_dst));
 
@@ -366,7 +366,7 @@ void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *pack
 	printf("	Sequence number: %d\n",tcp->th_seq);
 	printf("	Acknowledgement number: %d\n",tcp->th_ack);
 	printf("	Data offset: %d\n",tcp->th_offx2);
-	printf("	Flag: %s\n",tcp->th_flags);
+	printf("	Flag: %c\n",tcp->th_flags);
 	printf("	Window: %d\n",tcp->th_win);
 	printf("	Checksum: %d\n",tcp->th_sum);
 	printf("	Urgent pointer: %d\n",tcp->th_urp);
