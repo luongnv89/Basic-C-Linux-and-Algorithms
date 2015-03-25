@@ -157,7 +157,7 @@ int main(int argc,char *argv[]){
 	    /* look for this TCP stream */
 	    if ( !(tcpstream = ntoh_tcp_find_stream ( tcpsession , &tcpt5 )) )
 	    {
-	        if ( ! ( tcpstream = ntoh_tcp_new_stream( tcpsession , &tcpt5, &tcp_callback , 0 , &error,1,1) ) )
+	        if ( ! ( tcpstream = ntoh_tcp_new_stream( tcpsession , &tcpt5, &tcp_callback , 0 , &error,0,0) ) )
 	            fprintf ( stderr , "\n[e] Error %d creating new stream: %s" , error , ntoh_get_errdesc ( error ) );
 	        else{
 	            fprintf ( stderr , "\n[i] New stream added! %s:%d --> " , inet_ntoa ( *(struct in_addr*)&tcpt5.source ) , ntohs ( tcpt5.sport ) );
