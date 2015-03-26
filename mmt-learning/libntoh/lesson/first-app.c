@@ -34,7 +34,7 @@ int main(int argc,char *argv[]){
 	struct pcap_pkthdr header;
 
 	fprintf(stderr, "\n[i] libntoh version: %s\n",ntoh_version());
-
+	fprintf(stderr, "\n[i] pcap version: %s\n",pcap_lib_version());
 	if(argc<3){
 		fprintf(stderr, "\n[+] Usage: %s <option>",argv[0]);
 		fprintf(stderr, "\n+ Options:");
@@ -101,10 +101,17 @@ int main(int argc,char *argv[]){
 		exit(-5);
 	}
 	signal(SIGINT,&shandler);
-
 	/*Capture starts*/
+	printf("\n Befor capturing...");
+	
+	// int count =0;
+	// while(count<10){
+	// 	count++;
+	// 	packet=pcap_next(handle,&header);
+	// 	fprintf(stderr, "\n Got a packet: %p" , packet);
+	// }
 	while((packet=pcap_next(handle,&header))!=0){
-		fprintf(stderr, "\n Got a packet!");
+		fprintf(stderr, "\n Got a packet: %p" , packet);
 	}
 
 	shandler(0);
