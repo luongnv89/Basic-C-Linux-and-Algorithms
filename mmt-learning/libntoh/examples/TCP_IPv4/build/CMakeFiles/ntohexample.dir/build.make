@@ -49,37 +49,37 @@ include CMakeFiles/ntohexample.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ntohexample.dir/flags.make
 
-CMakeFiles/ntohexample.dir/example.c.o: CMakeFiles/ntohexample.dir/flags.make
-CMakeFiles/ntohexample.dir/example.c.o: ../example.c
+CMakeFiles/ntohexample.dir/bwexample.c.o: CMakeFiles/ntohexample.dir/flags.make
+CMakeFiles/ntohexample.dir/bwexample.c.o: ../bwexample.c
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/percevio/projects/c/mmt-learning/libntoh/examples/TCP_IPv4/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/ntohexample.dir/example.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/ntohexample.dir/example.c.o   -c /home/percevio/projects/c/mmt-learning/libntoh/examples/TCP_IPv4/example.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/ntohexample.dir/bwexample.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/ntohexample.dir/bwexample.c.o   -c /home/percevio/projects/c/mmt-learning/libntoh/examples/TCP_IPv4/bwexample.c
 
-CMakeFiles/ntohexample.dir/example.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ntohexample.dir/example.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/percevio/projects/c/mmt-learning/libntoh/examples/TCP_IPv4/example.c > CMakeFiles/ntohexample.dir/example.c.i
+CMakeFiles/ntohexample.dir/bwexample.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ntohexample.dir/bwexample.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/percevio/projects/c/mmt-learning/libntoh/examples/TCP_IPv4/bwexample.c > CMakeFiles/ntohexample.dir/bwexample.c.i
 
-CMakeFiles/ntohexample.dir/example.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ntohexample.dir/example.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/percevio/projects/c/mmt-learning/libntoh/examples/TCP_IPv4/example.c -o CMakeFiles/ntohexample.dir/example.c.s
+CMakeFiles/ntohexample.dir/bwexample.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ntohexample.dir/bwexample.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/percevio/projects/c/mmt-learning/libntoh/examples/TCP_IPv4/bwexample.c -o CMakeFiles/ntohexample.dir/bwexample.c.s
 
-CMakeFiles/ntohexample.dir/example.c.o.requires:
-.PHONY : CMakeFiles/ntohexample.dir/example.c.o.requires
+CMakeFiles/ntohexample.dir/bwexample.c.o.requires:
+.PHONY : CMakeFiles/ntohexample.dir/bwexample.c.o.requires
 
-CMakeFiles/ntohexample.dir/example.c.o.provides: CMakeFiles/ntohexample.dir/example.c.o.requires
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/example.c.o.provides.build
-.PHONY : CMakeFiles/ntohexample.dir/example.c.o.provides
+CMakeFiles/ntohexample.dir/bwexample.c.o.provides: CMakeFiles/ntohexample.dir/bwexample.c.o.requires
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/bwexample.c.o.provides.build
+.PHONY : CMakeFiles/ntohexample.dir/bwexample.c.o.provides
 
-CMakeFiles/ntohexample.dir/example.c.o.provides.build: CMakeFiles/ntohexample.dir/example.c.o
+CMakeFiles/ntohexample.dir/bwexample.c.o.provides.build: CMakeFiles/ntohexample.dir/bwexample.c.o
 
 # Object files for target ntohexample
 ntohexample_OBJECTS = \
-"CMakeFiles/ntohexample.dir/example.c.o"
+"CMakeFiles/ntohexample.dir/bwexample.c.o"
 
 # External object files for target ntohexample
 ntohexample_EXTERNAL_OBJECTS =
 
-ntohexample: CMakeFiles/ntohexample.dir/example.c.o
+ntohexample: CMakeFiles/ntohexample.dir/bwexample.c.o
 ntohexample: CMakeFiles/ntohexample.dir/build.make
 ntohexample: CMakeFiles/ntohexample.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable ntohexample"
@@ -89,7 +89,7 @@ ntohexample: CMakeFiles/ntohexample.dir/link.txt
 CMakeFiles/ntohexample.dir/build: ntohexample
 .PHONY : CMakeFiles/ntohexample.dir/build
 
-CMakeFiles/ntohexample.dir/requires: CMakeFiles/ntohexample.dir/example.c.o.requires
+CMakeFiles/ntohexample.dir/requires: CMakeFiles/ntohexample.dir/bwexample.c.o.requires
 .PHONY : CMakeFiles/ntohexample.dir/requires
 
 CMakeFiles/ntohexample.dir/clean:

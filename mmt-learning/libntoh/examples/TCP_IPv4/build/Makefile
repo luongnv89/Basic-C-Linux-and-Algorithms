@@ -111,29 +111,29 @@ ntohexample/fast:
 	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/build
 .PHONY : ntohexample/fast
 
-example.o: example.c.o
-.PHONY : example.o
+bwexample.o: bwexample.c.o
+.PHONY : bwexample.o
 
 # target to build an object file
-example.c.o:
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/example.c.o
-.PHONY : example.c.o
+bwexample.c.o:
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/bwexample.c.o
+.PHONY : bwexample.c.o
 
-example.i: example.c.i
-.PHONY : example.i
+bwexample.i: bwexample.c.i
+.PHONY : bwexample.i
 
 # target to preprocess a source file
-example.c.i:
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/example.c.i
-.PHONY : example.c.i
+bwexample.c.i:
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/bwexample.c.i
+.PHONY : bwexample.c.i
 
-example.s: example.c.s
-.PHONY : example.s
+bwexample.s: bwexample.c.s
+.PHONY : bwexample.s
 
 # target to generate assembly for a file
-example.c.s:
-	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/example.c.s
-.PHONY : example.c.s
+bwexample.c.s:
+	$(MAKE) -f CMakeFiles/ntohexample.dir/build.make CMakeFiles/ntohexample.dir/bwexample.c.s
+.PHONY : bwexample.c.s
 
 # Help Target
 help:
@@ -144,9 +144,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... ntohexample"
 	@echo "... rebuild_cache"
-	@echo "... example.o"
-	@echo "... example.i"
-	@echo "... example.s"
+	@echo "... bwexample.o"
+	@echo "... bwexample.i"
+	@echo "... bwexample.s"
 .PHONY : help
 
 

@@ -1,5 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/ntohexample.dir/example.c.o"
+  "CMakeFiles/ntohexample.dir/bwexample.c.o"
   "ntohexample.pdb"
   "ntohexample"
 )
