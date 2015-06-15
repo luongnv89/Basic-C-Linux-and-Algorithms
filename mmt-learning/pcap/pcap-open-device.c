@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <pcap.h>
-
+void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *packet){
+	printf("\n Got some packets: %d",header->len);
+}
 int main(int argc, char *argvp[]){
 	pcap_t *handle;	/* Session handle*/
 	char errbuf[PCAP_ERRBUF_SIZE]; /*Error string*/
@@ -27,6 +29,11 @@ int main(int argc, char *argvp[]){
 		fprintf(stderr,"Couldn't install filter %s: %s\n",filter_exp,pcap_geterr(handle));
 		return(2);
 	}
-	printf("Device: %s",dev);
+	printf("Start capturing on device: %s",dev);
+	/*cleanup*/
+	pcap_loop(handle,10,got_packet,NULL);
+	pcap_freecode(&fp);
+	pcap_close(handle);
+	printf("\n Capture complete.\n");
 	return(0);
 }

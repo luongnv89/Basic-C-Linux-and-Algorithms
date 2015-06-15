@@ -11,7 +11,7 @@
 #include <libntoh.h>
 
 #define SIZE_ETHERNET 14
-
+ 
 pcap_t *handle;
 
 //Session handle
@@ -27,6 +27,7 @@ void shandler(int s){
 void tcp_callback(pntoh_tcp_stream_t stream, pntoh_tcp_peer_t orig, pntoh_tcp_peer_t dest, pntoh_tcp_segment_t seg, int reason, int extra){
 	fprintf(stderr, "\n something happening header");
 }
+
 int main(int argc,char *argv[]){
 	/*Parameter parsing*/
 	int c;
@@ -130,9 +131,12 @@ int main(int argc,char *argv[]){
 		shandler(0);
 	}
 	printf("create new tcp session ok! \n");
+	int count = 0;
 	/*Capture starts*/
-	while((packet=pcap_next(handle,&header))!=0){
-		fprintf(stderr, "\n Got a packet! \n");
+	while(count<20){
+		count++;
+		packet=pcap_next(handle,&header);
+		fprintf(stderr, "\n Got a packet: %d \n",count);
 		/** Chec ip header */
 		iphdr = (struct ip*)(packet+SIZE_ETHERNET);
 		size_ip=iphdr->ip_hl*4;
@@ -149,7 +153,7 @@ int main(int argc,char *argv[]){
 		if((size_tcp=tcphdr->th_off*4)<sizeof(struct tcphdr))
 			continue;
 		printf("TCP header size ok! \n");
-		/* fill TCP tuple5 fields */
+		//fill TCP tuple5 fields 
 		ntoh_tcp_get_tuple5(iphdr,tcphdr,&tcpt5);
 
 		/* look for this TCP stream */
@@ -163,6 +167,7 @@ int main(int argc,char *argv[]){
 		}
 		printf("End of a while loop! \n");
 	}
+	// pcap_loop(handle,100,got_packet,NULL);
 
 	shandler(0);
 	//dummy result

@@ -8,7 +8,10 @@
 #define SIZE_ETHERNET 14
 
 pcap_t *handle;
-
+void got_packet(u_char *args,const struct pcap_pkthdr *header,const u_char *packet){
+    printf("\nGot some packets!");
+    printf("\nPacket header time stamp %ld.%06ld:\n",header->ts.tv_sec,header->ts.tv_usec);
+}
 void shandler ( int s )
 {
     if ( s != 0 )
@@ -113,12 +116,18 @@ int main ( int argc , char *argv[] )
     }
 
     signal ( SIGINT , &shandler );
-
+    printf("\n I am here. Just before capturing some packets");
     /* capture starts */
-    while ( ( packet = pcap_next( handle, &header ) ) != 0 )
-    {
-        fprintf ( stderr , "\nGot a packet!");
-    }
+    // while ( ( packet = pcap_next( handle, &header ) ) != 0 )
+    // {
+    //     fprintf ( stderr , "\nGot a packet!");
+    // }
+    /*now we can set our callback function
+    * handle: session handler
+    * num_packets: number of packet to sniff before returning
+    * got_packet: callback function
+    */
+    pcap_loop(handle,10,got_packet,NULL);
 
     shandler(0);
     //dummy return

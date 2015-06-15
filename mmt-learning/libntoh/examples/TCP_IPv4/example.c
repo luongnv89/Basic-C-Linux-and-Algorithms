@@ -511,8 +511,11 @@ int main ( int argc , char *argv[] )
 	fprintf ( stderr , "\n[i] Max. IPv4 flows allowed: %d\n\n" , ntoh_ipv4_get_size ( ipv4_session ) );
 
 	/* capture starts */
-	while ( ( packet = pcap_next( handle, &header ) ) != 0 )
+	// while ( ( packet = pcap_next( handle, &header ) ) != 0 )
+	while(1)
 	{
+		packet = pcap_next( handle, &header );
+		printf("\n Got packet: %d",header.len);
 		/* get packet headers */
 		ip = (struct ip*) ( packet + sizeof ( struct ether_header ) );
 		if ( (ip->ip_hl * 4 ) < sizeof(struct ip) )
