@@ -1,4 +1,4 @@
-1. Create a bash file name `hello.sh`. It will work as follow:
+## 1. Create a bash file name `hello.sh`. It will work as follow:
 
 ```
 ./hello.sh NGUYEN
@@ -7,7 +7,7 @@ Bonjour NGUYEN!
 Xin Chao NGUYEN
 ```
 
-2. Create a bash file name `my_cal.sh`. It will provide some basic math evaluation:
+## 2. Create a bash file name `my_cal.sh`. It will provide some basic math evaluation:
 
 ```
 ./my_cal.sh 12 14
@@ -15,7 +15,7 @@ sum: 26
 mul: 168
 ```
 
-3. Check if a document contains a word:
+## 3. Check if a document contains a word:
 
 ```
 ./search_word.sh  "Nguyen" mydocument.txt
@@ -27,7 +27,7 @@ yes
 No
 ```
 
-4. Count number of word/sentence/character in a document:
+## 4. Count number of word/sentence/character in a document:
 
 ```
 ./count_word.sh mydocument.txt
@@ -36,7 +36,7 @@ No
 700 characters
 ```
 
-5. Find a document by name, if it exists then show the number of word, sentence and character:
+## 5. Find a document by name, if it exists then show the number of word, sentence and character:
 
 ```
 ./find_doc.sh mydocument.txt
@@ -51,7 +51,7 @@ The document exists
 Sorry, the document does not exist
 ```
 
-6. Find all the document which contains a word:
+## 6. Find all the document which contains a word:
 
 ```
 ./find_doc_word.sh "KeyWord" location/
