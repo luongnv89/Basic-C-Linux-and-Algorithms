@@ -1,4 +1,4 @@
-# C-LinuxShell-Reviewing
+# Basic C, Linux and Algorithms
 Some code for the exercises in my Computer Science course.
 
 **C-Language**
